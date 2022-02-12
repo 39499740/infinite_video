@@ -15,7 +15,3 @@
 
 Flutter版本：2.10.0 stable  
 
-第三方库：  
-http: 0.13.4  
-html: 0.15.0  
-video_box: 0.16.1  

@@ -1,7 +1,7 @@
 /*
  * @Author: 郝怿
  * @Date: 2022-02-09 00:36:36
- * @LastEditTime: 2022-02-12 22:38:55
+ * @LastEditTime: 2022-02-12 23:54:27
  * @LastEditors: 郝怿
  * @Description: 
  * @FilePath: /infinite_video/lib/crawler/home.dart
@@ -9,7 +9,7 @@
 
 import 'package:html/parser.dart' show parse;
 import 'package:http/http.dart' as http;
-import 'package:infinite_video/model/bumimi/home_model';
+import 'package:infinite_video/model/bumimi/home_model.dart';
 
 class Home {
   static getHomeData() async {
@@ -20,18 +20,12 @@ class Home {
 
     List<BMMHome> homeDataList = [];
 
-    var temp = document.getElementsByClassName("content-wrap g-clear");
-    temp.forEach((element) {
-      // print(ele
-      //     .getElementsByClassName("icontent-left")
-      //     .first
-      //     .getElementsByClassName('p-mod-label')
-      //     .first
-      //     .text);
-
+    document.getElementsByClassName("content-wrap g-clear").forEach((element) {
       element.getElementsByClassName("icontent-left").forEach((ele) {
         homeDataList.add(BMMHome.fromElement(ele));
       });
     });
+
+    return homeDataList;
   }
 }
