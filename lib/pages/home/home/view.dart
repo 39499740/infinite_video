@@ -1,7 +1,7 @@
 /*
  * @Author: 郝怿
  * @Date: 2022-02-12 23:05:32
- * @LastEditTime: 2022-02-13 00:11:52
+ * @LastEditTime: 2022-02-13 23:12:16
  * @LastEditors: 郝怿
  * @Description: 用户首页
  * @FilePath: /infinite_video/lib/pages/home/home/view.dart
@@ -32,6 +32,7 @@ class HomePage extends StatelessWidget {
     final pp = Provider.of<HomeProvider>(context, listen: true);
     p.init();
     return Scaffold(
+        backgroundColor: Colors.white,
         body: pp.homeAreaDataList.isEmpty
             ? Center(
                 child: LoadingAnimationWidget.staggeredDotsWave(
@@ -48,7 +49,7 @@ class HomePage extends StatelessWidget {
               )));
   }
 
-  Widget _videoAreaWidget(BMMHome areaData, HomeProvider p, HomeProvider pp) {
+  Widget _videoAreaWidget(HomeModel areaData, HomeProvider p, HomeProvider pp) {
     return SliverStickyHeader(
       header: Container(
         height: 60.0,
@@ -77,7 +78,8 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _videoWidget(Videos video, HomeProvider p, HomeProvider pp) {
-    return Container(
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,6 +103,9 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
+      onTap: () {
+        p.jumpToVideoInfo(video);
+      },
     );
   }
 }

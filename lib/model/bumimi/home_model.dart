@@ -1,7 +1,7 @@
 /*
  * @Author: 郝怿
  * @Date: 2022-02-10 23:33:44
- * @LastEditTime: 2022-02-13 00:04:28
+ * @LastEditTime: 2022-02-13 23:28:36
  * @LastEditors: 郝怿
  * @Description: 
  * @FilePath: /infinite_video/lib/model/bumimi/home_model.dart
@@ -11,13 +11,13 @@ import 'package:html/dom.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:http/http.dart' as http;
 
-class BMMHome {
+class HomeModel {
   String? title;
   List<Videos>? videos;
 
-  BMMHome({this.title, this.videos});
+  HomeModel({this.title, this.videos});
 
-  BMMHome.fromJson(Map<String, dynamic> json) {
+  HomeModel.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     if (json['videos'] != null) {
       videos = <Videos>[];
@@ -27,7 +27,7 @@ class BMMHome {
     }
   }
 
-  BMMHome.fromElement(Element element) {
+  HomeModel.fromElement(Element element) {
     title = element.getElementsByClassName('p-mod-label').first.text;
     videos = <Videos>[];
     element.getElementsByClassName('y-newfigure').forEach((ele) {
@@ -79,7 +79,7 @@ class Videos {
         .text;
     url = element.querySelector('a')!.attributes['href'].toString();
     if (url!.startsWith("/")) {
-      url = "https://www.bumimi77.com" + url!;
+      url = "http://www.bumimi77.com" + url!;
     }
   }
 

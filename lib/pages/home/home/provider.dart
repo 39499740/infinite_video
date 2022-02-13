@@ -1,7 +1,7 @@
 /*
  * @Author: 郝怿
  * @Date: 2022-02-12 23:05:32
- * @LastEditTime: 2022-02-12 23:54:06
+ * @LastEditTime: 2022-02-13 23:12:24
  * @LastEditors: 郝怿
  * @Description: 首页数据
  * @FilePath: /infinite_video/lib/pages/home/home/provider.dart
@@ -17,8 +17,8 @@ class HomeProvider extends ChangeNotifier {
 
   bool _initialized = false;
 
-  List<BMMHome> _homeAreaDataList = [];
-  List<BMMHome> get homeAreaDataList => _homeAreaDataList;
+  List<HomeModel> _homeAreaDataList = [];
+  List<HomeModel> get homeAreaDataList => _homeAreaDataList;
 
   void init() {
     if (!_initialized) {
@@ -28,5 +28,9 @@ class HomeProvider extends ChangeNotifier {
         notifyListeners();
       });
     }
+  }
+
+  void jumpToVideoInfo(Videos v) {
+    Navigator.pushNamed(context, '/videoInfo', arguments: {'videos': v});
   }
 }
